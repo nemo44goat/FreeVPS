@@ -16,12 +16,8 @@ jobs:
 
     - name: Setting Up the MacOS Environment
       env:
-        MAC_USER_PASSWORD: ${{ secrets.MAC_USER_PASSWORD }}
-        VNC_PASSWORD: ${{ secrets.VNC_PASSWORD }}
-        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-        MAC_REALNAME: ${{ secrets.MAC_REALNAME }}
         CHROME_HEADLESS_CODE: ${{ secrets.CHROME_HEADLESS_CODE }}
-      run: bash macos-run.sh "$MAC_USER_PASSWORD" "$VNC_PASSWORD" "$NGROK_AUTH_TOKEN" "$MAC_REALNAME" "$CHROME_HEADLESS_CODE"
+      run: bash macos-run.sh "$CHROME_HEADLESS_CODE"
 
     - name: Keep Running MacOS System and keepAlive
       run: sleep 6h
