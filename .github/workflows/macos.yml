@@ -22,21 +22,5 @@ jobs:
         MAC_REALNAME: ${{ secrets.MAC_REALNAME }}
       run: bash macos-run.sh "$MAC_USER_PASSWORD" "$VNC_PASSWORD" "$NGROK_AUTH_TOKEN" "$MAC_REALNAME"
 
-    - name: Connecting MacOS with Ngrok to VNC Server
-      run: |
-        sleep 5
-        curl -s http://127.0.0.1:4040/api/tunnels > tunnels.json
-        python3 << 'EOF'
-        import json
-        with open('tunnels.json') as f:
-            d = json.load(f)
-        url = d['tunnels'][0]['public_url'].replace('tcp://', '')
-        host, port = url.split(':')
-        print('================================')
-        print('VNC HOST:', host)
-        print('VNC PORT:', port)
-        print('================================')
-        EOF
-
     - name: Keep Running MacOS System and keepAlive
       run: sleep 6h
