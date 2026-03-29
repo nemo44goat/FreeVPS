@@ -50,3 +50,17 @@ print('VNC PORT:', port)
 print('VNC PASSWORD: Your VNC_PASSWORD secret')
 print('================================')
 "
+
+# Wake up display and start GUI session
+sudo -u runner open /System/Applications/Utilities/Terminal.app &
+sleep 2
+
+# Force screen refresh
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart \
+  -restart -agent
+
+sleep 3
+
+# Start Finder to activate GUI
+sudo -u runner open /System/Library/CoreServices/Finder.app &
+sleep 5
